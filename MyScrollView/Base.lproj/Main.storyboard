@@ -17,6 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nHL-JC-o0c" customClass="MyScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Hot-7c-x1f" appends="YES" id="ckO-m6-m9d"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kGV-e9-OaA">
                                 <rect key="frame" x="20" y="40" width="100" height="100"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,8 +70,16 @@
                             <constraint firstItem="WNC-N8-9sk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="40" id="o27-rN-GtK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="blueView" destination="WNC-N8-9sk" id="a11-bj-Hux"/>
+                        <outlet property="greenView" destination="kPn-88-tyf" id="W1E-s3-wBT"/>
+                        <outlet property="myScrollView" destination="nHL-JC-o0c" id="hNQ-Yj-cPk"/>
+                        <outlet property="redView" destination="kGV-e9-OaA" id="vFo-zB-L5u"/>
+                        <outlet property="yellowView" destination="RVA-Tu-iGV" id="T2o-SA-0r9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Hot-7c-x1f"/>
             </objects>
         </scene>
     </scenes>
