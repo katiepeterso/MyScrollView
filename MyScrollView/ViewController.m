@@ -29,7 +29,9 @@
     [self.myScrollView addSubview:self.greenView];
     [self.myScrollView addSubview:self.yellowView];
     
-    self.myScrollView.contentSize = CGSizeMake(300, 750);
+    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc]
+                                                 initWithTarget:self.myScrollView action:@selector(viewPanned:)];
+    [self.myScrollView addGestureRecognizer:gestureRecognizer];
 }
 
 //-(void)viewDidAppear:(BOOL)animated {

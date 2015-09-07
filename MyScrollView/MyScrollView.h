@@ -12,4 +12,6 @@
 
 @property (nonatomic)CGSize contentSize;
 
+- (void)viewPanned:(UIPanGestureRecognizer *)sender;
+
 @end

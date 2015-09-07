@@ -10,33 +10,26 @@
 
 @implementation MyScrollView
 
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
-    self = [super initWithCoder:coder];
-    if (self) {
-        UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc]
-                                                     initWithTarget:self action:@selector(viewPanned:)];
-        [self addGestureRecognizer:gestureRecognizer];
-    }
-    return self;
-}
-
 - (void)viewPanned:(UIPanGestureRecognizer *)sender {
     CGPoint panTranslation = [sender translationInView:self];
-    if (panTranslation.x<=300) {
-        if (panTranslation.y<=750) {
-            [self setBounds:CGRectMake(-panTranslation.x, -panTranslation.y, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
-        }
-        else {
-            [self setBounds:CGRectMake(-panTranslation.x, -750, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
-        }
-    }
-    else if (panTranslation.y <= 750) {
-        [self setBounds:CGRectMake(-300, -panTranslation.y, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
-    }
-    else {
-        [self setBounds:CGRectMake(-300, -750, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
-    }
+    
+    self.contentSize = CGSizeMake(300, 750);
+    
+    CGRect bounds = self.bounds;
+    
+    // Translate the view's bounds, but do not permit values that would violate contentSize
+    CGFloat newBoundsOriginX = bounds.origin.x - panTranslation.x;
+    CGFloat minBoundsOriginX = 0.0;
+    CGFloat maxBoundsOriginX = self.contentSize.width - bounds.size.width;
+    bounds.origin.x = fmax(minBoundsOriginX, fmin(newBoundsOriginX, maxBoundsOriginX));
+    
+    CGFloat newBoundsOriginY = bounds.origin.y - panTranslation.y;
+    CGFloat minBoundsOriginY = 0.0;
+    CGFloat maxBoundsOriginY = self.contentSize.height - bounds.size.height;
+    bounds.origin.y = fmax(minBoundsOriginY, fmin(newBoundsOriginY, maxBoundsOriginY));
+    
+    self.bounds = bounds;
+    [sender setTranslation:CGPointZero inView:self];
     
 }
 
