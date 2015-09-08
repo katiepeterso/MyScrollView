@@ -20,12 +20,12 @@
     // Translate the view's bounds, but do not permit values that would violate contentSize
     CGFloat newBoundsOriginX = bounds.origin.x - panTranslation.x;
     CGFloat minBoundsOriginX = 0.0;
-    CGFloat maxBoundsOriginX = self.contentSize.width - bounds.size.width;
+    CGFloat maxBoundsOriginX = self.contentSize.width;
     bounds.origin.x = fmax(minBoundsOriginX, fmin(newBoundsOriginX, maxBoundsOriginX));
     
     CGFloat newBoundsOriginY = bounds.origin.y - panTranslation.y;
     CGFloat minBoundsOriginY = 0.0;
-    CGFloat maxBoundsOriginY = self.contentSize.height - bounds.size.height;
+    CGFloat maxBoundsOriginY = self.contentSize.height;
     bounds.origin.y = fmax(minBoundsOriginY, fmin(newBoundsOriginY, maxBoundsOriginY));
     
     self.bounds = bounds;

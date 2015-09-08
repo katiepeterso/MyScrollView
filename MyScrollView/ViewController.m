@@ -34,10 +34,6 @@
     [self.myScrollView addGestureRecognizer:gestureRecognizer];
 }
 
-//-(void)viewDidAppear:(BOOL)animated {
-//    [self.view setBounds:CGRectMake(0, 100, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
